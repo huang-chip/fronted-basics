@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML表单控件示例</title>
+  </head>
+  <body>
+    <h1>HTML表单控件示例</h1>
+
+    <!-- 使用POST方法，启用表单验证 -->
+    <form method="post" id="exampleForm" novalidate>
+      <!-- 文本输入 -->
+      <fieldset>
+        <legend>基本信息</legend>
+        <p>
+          <label for="name">姓名:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            minlength="2"
+            maxlength="20"
+            placeholder="请输入姓名" />
+        </p>
+        <p>
+          <label for="email">邮箱:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+        </p>
+        <p>
+          <label for="tel">电话:</label>
+          <input type="tel" id="tel" name="tel" pattern="[0-9]{11}" />
+        </p>
+        <p>
+          <label for="password">密码:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            minlength="8" />
+        </p>
+      </fieldset>
+
+      <!-- 数值类型输入 -->
+      <fieldset>
+        <legend>数值信息</legend>
+        <p>
+          <label for="age">年龄:</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            min="18"
+            max="120"
+            step="1" />
+        </p>
+        <p>
+          <label for="height">身高(cm):</label>
+          <input
+            type="range"
+            id="height"
+            name="height"
+            min="140"
+            max="220"
+            step="1"
+            value="170" />
+          <output for="height" id="heightValue">170</output>
+        </p>
+      </fieldset>
+
+      <!-- 日期和时间 -->
+      <fieldset>
+        <legend>日期和时间</legend>
+        <p>
+          <label for="birthday">生日:</label>
+          <input type="date" id="birthday" name="birthday" />
+        </p>
+        <p>
+          <label for="meeting-time">会议时间:</label>
+          <input type="datetime-local" id="meeting-time" name="meeting-time" />
+        </p>
+      </fieldset>
+
+      <!-- 选择控件 -->
+      <fieldset>
+        <legend>选择项</legend>
+        <p>
+          <label for="education">学历:</label>
+          <select id="education" name="education" required>
+            <option value="">请选择</option>
+            <optgroup label="本科及以下">
+              <option value="high-school">高中</option>
+              <option value="bachelor">本科</option>
+            </optgroup>
+            <optgroup label="研究生">
+              <option value="master">硕士</option>
+              <option value="phd">博士</option>
+            </optgroup>
+          </select>
+        </p>
+
+        <!-- 单选按钮 -->
+        <p>性别:</p>
+        <p>
+          <input type="radio" id="male" name="gender" value="male" required />
+          <label for="male">男</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">女</label>
+        </p>
+
+        <!-- 复选框 -->
+        <p>兴趣爱好:</p>
+        <p>
+          <input type="checkbox" id="reading" name="hobbies" value="reading" />
+          <label for="reading">阅读</label>
+          <input type="checkbox" id="sports" name="hobbies" value="sports" />
+          <label for="sports">运动</label>
+          <input type="checkbox" id="music" name="hobbies" value="music" />
+          <label for="music">音乐</label>
+        </p>
+      </fieldset>
+
+      <!-- 文件上传 -->
+      <fieldset>
+        <legend>文件上传</legend>
+        <p>
+          <label for="avatar">头像:</label>
+          <input type="file" id="avatar" name="avatar" accept="image/*" />
+        </p>
+      </fieldset>
+
+      <!-- 文本区域 -->
+      <fieldset>
+        <legend>其他信息</legend>
+        <p>
+          <label for="bio">个人简介:</label>
+          <textarea
+            id="bio"
+            name="bio"
+            rows="4"
+            cols="50"
+            maxlength="200"
+            placeholder="请输入个人简介..."></textarea>
+        </p>
+      </fieldset>
+
+      <!-- 隐藏字段 -->
+      <input type="hidden" name="form-id" value="user-registration" />
+
+      <!-- 提交和重置按钮 -->
+      <p>
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+      </p>
+    </form>
+
+    <script>
+      // 显示范围滑块的当前值
+      document.getElementById("height").addEventListener("input", function () {
+        document.getElementById("heightValue").value = this.value;
+      });
+
+      // 表单验证
+      document
+        .getElementById("exampleForm")
+        .addEventListener("submit", function (event) {
+          if (!this.checkValidity()) {
+            event.preventDefault();
+            alert("请检查表单填写是否正确");
+          }
+        });
+    </script>
+  </body>
+</html>
