@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>深入理解HTML语义化 - 让代码更有意义</title>
+  </head>
+  <body>
+    <header>
+      <h1>深入理解HTML语义化 - 让代码更有意义</h1>
+      <nav>
+        <ul>
+          <li><a href="#intro">简介</a></li>
+          <li><a href="#importance">重要性</a></li>
+          <li><a href="#examples">实践示例</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <section id="intro">
+          <h2>什么是HTML语义化？</h2>
+          <p>
+            HTML语义化是指使用恰当的HTML标签来传达文档的结构和含义，而不是单纯为了展示效果。比如，<strong>重要内容</strong>使用<code>&lt;strong&gt;</code>标签，而不是简单地用<code>&lt;b&gt;</code>来加粗。
+          </p>
+        </section>
+
+        <section id="importance">
+          <h2>为什么需要语义化？</h2>
+          <p>语义化HTML具有以下优势：</p>
+          <ul>
+            <li>提高可访问性</li>
+            <li>利于SEO优化</li>
+            <li>代码更易维护</li>
+          </ul>
+
+          <blockquote cite="https://www.w3.org/">
+            <p>
+              语义化标签能让页面的内容结构化，使之具有良好的可读性，有利于浏览器、搜索引擎和开发者对网页内容的理解。
+            </p>
+          </blockquote>
+        </section>
+
+        <section id="examples">
+          <h2>实践示例</h2>
+
+          <h3>文本语义化示例</h3>
+          <p>这里有一些<em>重要的</em>示例：</p>
+
+          <figure>
+            <pre><code>
+&lt;article&gt;
+    &lt;h1&gt;文章标题&lt;/h1&gt;
+    &lt;p&gt;这是一个段落&lt;/p&gt;
+&lt;/article&gt;
+                    </code></pre>
+            <figcaption>语义化代码示例</figcaption>
+          </figure>
+
+          <aside>
+            <h3>补充说明</h3>
+            <p>
+              在使用语义化标签时，要注意标签的嵌套关系。比如<mark>header应该在article内部</mark>。
+            </p>
+          </aside>
+
+          <h3>常见的文本修饰</h3>
+          <p>以下是一些常见的文本修饰示例：</p>
+          <ul>
+            <li><del>已删除的内容</del> 和 <ins>新插入的内容</ins></li>
+            <li>专业术语使用 <i>斜体</i></li>
+            <li>关键词使用 <b>加粗</b></li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <p>
+        <small
+          >© 2024 HTML语义化教程. 作者：
+          <address>前端学习者</address></small
+        >
+      </p>
+      <time datetime="2024-01-20">发布于：2024年1月20日</time>
+    </footer>
+  </body>
+</html>

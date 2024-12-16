@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML表单控件示例</title>
+    <title>表单控件</title>
   </head>
   <body>
     <h1>HTML表单控件示例</h1>
 
     <!-- 使用POST方法，启用表单验证 -->
-    <form method="post" id="exampleForm" novalidate>
+    <form method="post" id="exampleForm">
       <!-- 文本输入 -->
       <fieldset>
         <legend>基本信息</legend>
@@ -162,20 +162,60 @@
     </form>
 
     <script>
+      const form = document.getElementById("exampleForm");
+      const inputs = form.querySelectorAll("input, select, textarea");
+
+      // 为所有输入添加实时验证
+      inputs.forEach((input) => {
+        input.addEventListener("input", function () {
+          // 检查输入的有效性
+          if (!this.checkValidity()) {
+            // 显示自定义错误信息
+            this.reportValidity();
+          }
+        });
+      });
+
+      // 表单提交验证
+      form.addEventListener("submit", function (event) {
+        if (!this.checkValidity()) {
+          event.preventDefault();
+          // 找到第一个无效的输入并聚焦
+          const firstInvalid = form.querySelector(":invalid");
+          if (firstInvalid) {
+            firstInvalid.focus();
+            firstInvalid.reportValidity();
+          }
+        }
+      });
+
+      // 电话号码输入验证
+      const telInput = document.getElementById("tel");
+      telInput.addEventListener("input", function () {
+        if (this.value && !this.value.match(/^[0-9]{11}$/)) {
+          this.setCustomValidity("请输入11位数字的手机号码");
+        } else {
+          this.setCustomValidity("");
+        }
+      });
+
+      // 邮箱输入验证
+      const emailInput = document.getElementById("email");
+      emailInput.addEventListener("input", function () {
+        if (
+          this.value &&
+          !this.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+        ) {
+          this.setCustomValidity("请输入有效的邮箱地址");
+        } else {
+          this.setCustomValidity("");
+        }
+      });
+
       // 显示范围滑块的当前值
       document.getElementById("height").addEventListener("input", function () {
         document.getElementById("heightValue").value = this.value;
       });
-
-      // 表单验证
-      document
-        .getElementById("exampleForm")
-        .addEventListener("submit", function (event) {
-          if (!this.checkValidity()) {
-            event.preventDefault();
-            alert("请检查表单填写是否正确");
-          }
-        });
     </script>
   </body>
 </html>
