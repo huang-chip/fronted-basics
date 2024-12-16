@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML多媒体与响应式演示</title>
+  </head>
+  <body>
+    <h1>HTML多媒体与响应式演示</h1>
+
+    <h2>1. 基础图片</h2>
+    <img
+      src="https://picsum.photos/400/300"
+      alt="随机示例图片"
+      width="400"
+      height="300"
+      loading="lazy"
+      decoding="async" />
+
+    <h2>2. 响应式图片</h2>
+    <!-- srcset演示 -->
+    <img
+      srcset="
+        https://picsum.photos/320/240 320w,
+        https://picsum.photos/480/360 480w,
+        https://picsum.photos/800/600 800w
+      "
+      sizes="(max-width: 320px) 280px,
+                (max-width: 480px) 440px,
+                800px"
+      src="https://picsum.photos/800/600"
+      alt="响应式图片示例" />
+
+    <h2>3. Picture元素演示</h2>
+    <picture>
+      <source
+        media="(min-width: 800px)"
+        srcset="https://picsum.photos/800/400"
+        type="image/jpeg" />
+      <source
+        media="(min-width: 400px)"
+        srcset="https://picsum.photos/400/300"
+        type="image/jpeg" />
+      <img src="https://picsum.photos/200/150" alt="Picture元素响应式示例" />
+    </picture>
+
+    <h2>4. 音频播放器</h2>
+    <audio controls>
+      <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg" />
+      <source
+        src="https://www.w3schools.com/html/horse.mp3"
+        type="audio/mpeg" />
+      您的浏览器不支持音频播放。
+    </audio>
+
+    <h2>5. 视频播放器</h2>
+    <video controls width="600" poster="https://picsum.photos/600/400">
+      <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+      <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg" />
+      您的浏览器不支持视频播放。
+    </video>
+
+    <h2>6. iframe嵌入</h2>
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"
+      width="600"
+      height="400"
+      loading="lazy"
+      sandbox="allow-scripts allow-same-origin"
+      allow="fullscreen"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <h2>7. 不同设备像素比的响应式图片</h2>
+    <img
+      srcset="
+        https://picsum.photos/300 1x,
+        https://picsum.photos/600 2x,
+        https://picsum.photos/900 3x
+      "
+      src="https://picsum.photos/300"
+      alt="设备像素比响应式图片"
+      width="300" />
+
+    <footer>
+      <p>
+        注：本示例使用了 picsum.photos 提供的随机图片服务和 W3Schools
+        的示例媒体文件
+      </p>
+    </footer>
+  </body>
+</html>
